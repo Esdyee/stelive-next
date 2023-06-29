@@ -8,7 +8,7 @@ const options = {
 }
 
 let client
-let connectDB
+let connectDB: Promise<MongoClient>
 
 if (process.env.NODE_ENV === 'development') {
 	if (!global._mongoClientPromise) {
