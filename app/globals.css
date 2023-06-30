@@ -18,8 +18,11 @@ html, body {
 }
 
 .navbar a {
-	margin-right: 10px;
 	text-decoration: none;
+}
+
+.navbar-item {
+	@apply p-2 ms-1 me-1
 }
 
 .cart-item {

@@ -18,8 +18,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
       <div className="navbar">
-        <Link href="/">홈</Link>
-        <Link href="/list">List</Link>
+        <Link href="/" className="navbar-item">홈</Link>
+        <span>|</span>
+        <Link href="/list" className="navbar-item">List</Link>
       </div>
       <div className="body-content bg-neutral-800 text-white">
           {children}
