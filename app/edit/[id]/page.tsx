@@ -1,8 +1,14 @@
 import { ObjectId } from "bson";
 import { connectDB } from "@/util/database";
 
-export default async function Edit(props) {
-	const mongoId = props.params.id;
+export default async function Edit({
+	params,
+	searchParams,
+	}: {
+		params: { id: string }
+		searchParams: { [key: string]: string | string[] | undefined }
+	}) {
+	const mongoId = params.id;
 	const enableId = new ObjectId(mongoId);
 
 	const client = await connectDB;

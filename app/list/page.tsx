@@ -7,7 +7,7 @@ export default async function List() {
 	const client = await connectDB;
 	const db = client.db("db-stelive");
 	let result: unknown[] = await db.collection('post').find().toArray();
-	console.log(result);
+	// console.log(result);
 
 	return (
 		<div className="list-bg">
