@@ -20,7 +20,9 @@ export default function RootLayout({
       <div className="navbar">
         <Link href="/" className="navbar-item">홈</Link>
         <span>|</span>
-        <Link href="/list" className="navbar-item">List</Link>
+        <Link href="/list" className="navbar-item">리스트</Link>
+        <span>|</span>
+        <Link href="/write" className="navbar-item">작성</Link>
       </div>
       <div className="body-content bg-neutral-800 text-white">
           {children}
