@@ -33,6 +33,14 @@ export default function ListItem({ data }: {
 		}).catch((err) => { //인터넷문제 등으로 실패시 실행할코드
 			console.log(err);
 		});
+
+		// fetch(`/api/post/querystring?itemId=${itemId}`, {
+		// 	method: 'GET',
+		// })
+
+		// fetch(`/api/random/${itemId}`, {
+		// 	method: 'POST'
+		// });
 	};
 
 	useEffect(() => {
