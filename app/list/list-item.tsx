@@ -10,7 +10,7 @@ export default function ListItem({ data }: {
 
 	const [list, dispatchList] = useState(data);
 
-	const [deletedItemId, setDeletedItemId] = useState(null as string);
+	const [deletedItemId, setDeletedItemId] = useState("");
 
 	const handleDelete = (itemId: string) => {
 		console.log(itemId);
@@ -46,17 +46,18 @@ export default function ListItem({ data }: {
 	useEffect(() => {
 		if (deletedItemId) {
 			const timeout = setTimeout(() => {
-				setDeletedItemId(null);
+				setDeletedItemId("");
 			}, 500); // 애니메이션 지속시간인 0.5초 후에 삭제된 아이템 ID 초기화
 
 			return () => clearTimeout(timeout);
 		}
 	}, [deletedItemId]);
 
+	// @ts-ignore
 	return (
 		<div>
 			<div>Id : {deletedItemId}</div>
-			{list.map((item: unknown, index: number) => (
+			{list.map((item: any, index: number) => (
 				<div className={`list-item p-5 border-2 border-gray-500 mt-1 ${item.id === deletedItemId ? 'hide' : ''}`}
 					 key={index}>
 					<Link href={`/detail/${(item as Post).id}`} >

@@ -17,6 +17,7 @@ export default function Cart() {
 	)
 }
 
+// @ts-ignore
 function Btn(props){
 	let color = "red";
 	color = !props.color ? color : props.color;

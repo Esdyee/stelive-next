@@ -1,3 +1,4 @@
+import { NextApiRequest, NextApiResponse } from 'next';
 export default function Test(req, res) {
 	if(req.method === "GET") {
 		console.log(req.method);

@@ -3,7 +3,12 @@ import { connectDB } from "@/util/database";
 import { ObjectId } from "bson";
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	let id = req.query.test;
-	const objectId = new ObjectId(id);
+
+	let objectId;
+	if(typeof id === "string") {
+		objectId = new ObjectId(id);
+	}
+
 
 	if (req.method === "POST") {
 		try {

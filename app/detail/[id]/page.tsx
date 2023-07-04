@@ -2,6 +2,7 @@ import { connectDB } from "@/util/database";
 import Link from "next/link";
 import { ObjectId } from "bson";
 
+// @ts-ignore
 export default async function Detail(props) {
 
 	const mongoId = props.params.id;

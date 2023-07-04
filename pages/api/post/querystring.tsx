@@ -4,7 +4,12 @@ import { ObjectId } from "bson";
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	let id = req.query.itemId;
 	console.log(id);
-	const objectId = new ObjectId(id);
+
+	let objectId;
+	if(typeof id === "string") {
+		objectId = new ObjectId(id);
+	}
+
 
 	if (req.method === "GET") {
 		try {
