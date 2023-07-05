@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { MongoClient } from "mongodb";
 
-const uri = "mongodb+srv://nextjsTest:!23qweasd@nestcluster.axt8d.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb+srv://nextjsTest:!23qweasd@nestcluster.axt8d.mongodb.net/db-stelive?retryWrites=true&w=majority";
 
 const options = {
 	useNewUrlParser: true,

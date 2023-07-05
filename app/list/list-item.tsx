@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { Post } from "./interface";
 import { useEffect, useState } from "react";
+import styles from "./list-item.module.css";
 
 export default function ListItem({ data }: {
 	data: Post[];
@@ -58,7 +59,7 @@ export default function ListItem({ data }: {
 		<div>
 			<div>Id : {deletedItemId}</div>
 			{list.map((item: any, index: number) => (
-				<div className={`list-item p-5 border-2 border-gray-500 mt-1 ${item.id === deletedItemId ? 'hide' : ''}`}
+				<div className={`${styles['list-item']} p-5 border-2 border-gray-500 mt-1 ${item.id === deletedItemId ? styles.hide : ''}`}
 					 key={index}>
 					<Link href={`/detail/${(item as Post).id}`} >
 						<h4 className="text-xl font-semibold">{(item as Post).title}</h4>

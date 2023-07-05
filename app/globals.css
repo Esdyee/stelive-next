@@ -31,12 +31,3 @@ html, body {
 	justify-content: space-around;
 	border-bottom: 1px solid grey;
 }
-
-.list-item {
-	opacity: 1;
-	transition: opacity 0.5s ease-in-out;
-}
-
-.list-item.hide {
-	opacity: 0;
-}
