@@ -65,9 +65,9 @@ export default function ListItem({ data }: {
 						<h4 className="text-xl font-semibold">{(item as Post).title}</h4>
 						<p>{(item as Post).content}</p>
 					</Link>
-					<Link className="bg-green-800 mt-2 p-2 text-white inline-block"
+					<Link className="mt-2 inline-block bg-green-800 p-2 text-white"
 						  href={`/edit/${(item as Post).id}`}>수정</Link>
-					<span className="bg-red-800 mt-2 ms-2 p-2 text-white inline-block cursor-pointer"
+					<span className="mt-2 inline-block cursor-pointer bg-red-800 p-2 text-white ms-2"
 						  onClick={(e) => {
 							  const deleteId = (item as Post).id;
 							  handleDelete(deleteId)

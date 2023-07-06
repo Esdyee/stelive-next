@@ -29,9 +29,10 @@ export default async function RootLayout({
 			<span>|</span>
 			<Link href="/write" className="navbar-item">작성</Link>
 			<span>|</span>
+			<Link href="/signup" className="navbar-item">가입</Link>
 			<LoginBtn session={session} />
 		</div>
-		<div className="body-content bg-neutral-800 text-white">
+		<div className="bg-neutral-800 text-white body-content">
 			{children}
 		</div>
 		</body>

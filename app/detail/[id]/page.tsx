@@ -1,6 +1,7 @@
 import { connectDB } from "@/util/database";
 import Link from "next/link";
 import { ObjectId } from "bson";
+import Comment from "@/app/edit/comment";
 
 // @ts-ignore
 export default async function Detail(props) {
@@ -28,6 +29,7 @@ export default async function Detail(props) {
 			<h4>상세페이지</h4>
 			<h4>{result.title}</h4>
 			<p>{result.content}</p>
+			<Comment postId={mongoId}/>
 		</div>
 	)
 }

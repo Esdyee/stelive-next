@@ -21,7 +21,7 @@ export default function Cart() {
 function Btn(props){
 	let color = "red";
 	color = !props.color ? color : props.color;
-	return <button className="rounded-md w-20" style={{ background : color }}>버튼임</button>
+	return <button className="w-20 rounded-md" style={{ background : color }}>버튼임</button>
 }
 
 function CartItem(props: CartItemProps) {

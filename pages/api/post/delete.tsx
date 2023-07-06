@@ -13,13 +13,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 			const client = await connectDB;
 			const db = client.db("db-stelive");
 
+			// @ts-ignore
 			const session = await getServerSession(req, res, authOptions);
 
+			// 관리자인지 확인
+			let isAdmin;
+			if(typeof session?.user?.email === "string") {
+				const email: string = session?.user?.email;
+				const userData = await getAuthFromUser(email, db);
+				isAdmin = userData?.auth === "admin";
+			}
+
 			// 삭제할 데이터 검색
-			const findData = await getOneData(db);
+			const findData = await getOneData(objectId, db);
 
 			// 세션이 있고, 본인이 작성한 글만 삭제 가능
-			if( !session
+			if( isAdmin ) { // 관리자는 무조건 삭제 가능
+				console.log("pass isAdmin");
+			} else if( !session
 				|| session?.user?.email !== findData?.author
 			) {
 				return res.status(403).json('작성자만 삭제할 수 있습니다.');
@@ -40,11 +51,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	}
 
 	// 삭제할 데이터 검색
-	async function getOneData(db: Db) {
+	async function getOneData(objectId: ObjectId, db: Db) {
 		let result = await db.collection('post')
 			.findOne({ _id: objectId })
 			.then((r) => {
-				console.log(r);
+				return r;
+			})
+			.catch((err) => {
+				return res.status(500).json('MongoDB 처리 오류');
+			});
+
+		return result;
+	}
+
+	// get auth from data
+	async function getAuthFromUser(email: string, db: Db) {
+		let result = await db.collection('user_cred')
+			.findOne({ email })
+			.then((r) => {
 				return r;
 			})
 			.catch((err) => {

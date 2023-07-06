@@ -27,17 +27,17 @@ export default async function Edit({
 			<h1>수정페이지</h1>
 			<form action={'/api/post/edit'} method="POST">
 				<input type={"hidden"} name={"id"} value={mongoId} />
-				<div className="p-4 bg-gray-500 text-black">
+				<div className="bg-gray-500 p-4 text-black">
 					<input className="p-2" type="text" name={"title"} placeholder={"제목"}
 						   defaultValue={result?.title} />
 				</div>
-				<div className="p-4 bg-gray-500 text-black">
+				<div className="bg-gray-500 p-4 text-black">
 					<input className="p-2" type="text" name={"content"} placeholder={"내용"}
 						   defaultValue={result?.content} />
 				</div>
-				<div className="p-4 bg-gray-500">
+				<div className="bg-gray-500 p-4">
 					<button
-						className="bg-amber-400 text-black p-4"  type="submit">
+						className="bg-amber-400 p-4 text-black"  type="submit">
 						수정
 					</button>
 				</div>

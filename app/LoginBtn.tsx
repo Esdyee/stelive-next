@@ -10,7 +10,7 @@ export default function LoginBtn({session} : {
 			{
 				session 
 					? <div>
-						<img src={session.user.image} alt="profile" className="w-6 inline-block ms-2" />
+						<img src={session.user.image} alt="profile" className="inline-block w-6 ms-2" />
 						<span className={"ms-2"}>{session.user.name}</span>
 						<button className={"ms-2"} onClick={() => {
 							signOut()
@@ -18,7 +18,7 @@ export default function LoginBtn({session} : {
 					</div>
 						 
 					: <button onClick={() => {
-						signIn('github')
+						signIn('')
 					}}>로그인</button>
 			}
 		</div>
