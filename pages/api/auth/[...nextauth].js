@@ -36,12 +36,11 @@ export const authOptions = {
 						return r;
 					})
 					.catch((err) => {
-						console.log(err);
+						console.log("###bcrypt 오류", err);
 						return false;
 					});
 
 				if (!pwcheck) {
-					console.log(credentials.password, user.password)
 					console.log('비번틀림');
 					return null
 				}
@@ -50,10 +49,10 @@ export const authOptions = {
 			}
 		})
 	],
-
-	//3. jwt 써놔야 잘됩니다 + jwt 만료일설정
 	session: {
+		//3. jwt 써놔야 잘됩니다 + jwt 만료일설정
 		strategy: 'jwt',
+		// jwt: true,
 		maxAge: 30 * 24 * 60 * 60 //30일
 	},
 
@@ -76,6 +75,7 @@ export const authOptions = {
 			return session;
 		},
 	},
+
 
 	secret : '!23qweasd',
 	adapter: MongoDBAdapter(connectDB)
