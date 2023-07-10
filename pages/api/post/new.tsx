@@ -8,6 +8,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	if (req.method === "POST") {
 		let email;
 		const client = await connectDB;
+		// @ts-ignore
 		const session = await getServerSession(req, res, authOptions);
 		if(!!session) {
 			console.log("server", session?.user?.email);

@@ -26,7 +26,7 @@ export default async function Detail(props) {
 		}
 	});
 
-	console.log("comments", comments);
+	// console.log("comments", comments);
 
 	if(!result) {
 		return (

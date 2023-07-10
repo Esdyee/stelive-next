@@ -61,7 +61,7 @@ export default function ListItem({ data }: {
 			{list.map((item: any, index: number) => (
 				<div className={`${styles['list-item']} p-5 border-2 border-gray-500 mt-1 ${item.id === deletedItemId ? styles.hide : ''}`}
 					 key={index}>
-					<Link href={`/detail/${(item as Post).id}`} >
+					<Link href={`/detail/${(item as Post).id}`}>
 						<h4 className="text-xl font-semibold">{(item as Post).title}</h4>
 						<p>{(item as Post).content}</p>
 					</Link>
@@ -73,6 +73,44 @@ export default function ListItem({ data }: {
 							  handleDelete(deleteId)
 						  }}
 					>삭제</span>
+					<span className="mt-2 inline-block cursor-pointer bg-blue-800 p-2 text-white ms-2"
+						  onClick={(e) => {
+							  const postId = (item as Post).id;
+							  fetch(`/api/post/likes`, {
+								  method: 'POST',
+								  headers: {
+									  'Content-Type': 'application/json'
+								  },
+								  body: JSON.stringify({
+									  postId: postId
+								  })
+							  }).then(res => {
+								  if (res.status === 200) {
+									  return res;
+								  } else {
+									  // return fail
+									  if (res.status === 409) {
+										  throw new Error('좋아요를 이미 눌렀습니다.');
+									  }
+
+								  }
+							  }).then((res) => {
+								  console.log(res);
+								  const updatedList = list.map((item: Post) => {
+									  if (item.id === postId) {
+										  item.likes = item.likes ? Number(item.likes) + 1 : 1;
+									  }
+									  return item;
+								  });
+								  dispatchList(updatedList);
+							  }).catch((err) => {
+								  alert(err);
+							  })
+						  }}
+					>좋아요</span>
+					<span className={"ms-2"}
+					>{(item as Post).likes ? (item as Post).likes : 0}
+					</span>
 				</div>
 			))}
 		</div>

@@ -1,16 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { connectDB } from "@/util/database";
+// @ts-ignore
 import bcrypt from "bcrypt";
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
 	const { name, email, password } = req.body;
 	const auth = "user";
 
-	console.log("start signup");
-
 	const hashPassword = await passwordEncrypt(password);
-
-	console.log("hash-password", hashPassword);
 
 	if (req.method === "POST") {
 
@@ -45,7 +42,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 // 암호화 function
 async function passwordEncrypt(password: string) {
-	console.log("hashing start");
 	return await bcrypt.hash(password, 10);
 }
 

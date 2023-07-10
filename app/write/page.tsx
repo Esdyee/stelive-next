@@ -12,6 +12,7 @@ export default async function Edit({
 		searchParams: { [key: string]: string | string[] | undefined },
 	}) {
 
+	// @ts-ignore
 	const session = await getServerSession(authOptions);
 
 	if (!session) {

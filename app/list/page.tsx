@@ -20,7 +20,8 @@ export default async function List() {
 		return {
 			id: item._id.toString(),
 			title: item.title,
-			content: item.content
+			content: item.content,
+			likes: Number(item.likes)
 		}
 	});
 
