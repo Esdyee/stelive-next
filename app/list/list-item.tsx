@@ -88,11 +88,10 @@ export default function ListItem({ data }: {
 								  if (res.status === 200) {
 									  return res;
 								  } else {
-									  // return fail
-									  if (res.status === 409) {
-										  throw new Error('좋아요를 이미 눌렀습니다.');
-									  }
-
+									  // normal error
+									  return res.text().then((text) => {
+										  throw new Error(text);
+									  });
 								  }
 							  }).then((res) => {
 								  console.log(res);

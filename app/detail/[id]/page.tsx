@@ -2,6 +2,7 @@ import { connectDB } from "@/util/database";
 import Link from "next/link";
 import { ObjectId } from "bson";
 import Comment from "@/app/detail/comment";
+import notFound from "@/app/detail/[id]/not-found";
 
 // @ts-ignore
 export default async function Detail(props) {
@@ -29,12 +30,7 @@ export default async function Detail(props) {
 	// console.log("comments", comments);
 
 	if(!result) {
-		return (
-			<div>
-				<h4>상세페이지</h4>
-				<h4>데이터가 없습니다.</h4>
-			</div>
-		)
+		return notFound()
 	}
 
 	return(

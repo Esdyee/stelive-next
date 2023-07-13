@@ -55,6 +55,16 @@ export default function Comment({ postId, comments } : {
 		   		onChange={(e) => {
 				setComment(e.target.value)
 			}} />
+
+			<input type={"file"} accept={"image/*"} name={"image"}
+				   onChange={ (e) => {
+					   console.log(123);
+					   setComment("test2");
+				   }}
+			/>
+			<p> src: {comment}</p>
+			<img src={comment} alt={""} onLoad={() => console.log("이미지 로딩 완료")} />
+
 			<button className={"bg-blue-500 text-white p-2"}
 					onClick={() => {
 						fetch('/api/post/comment', {
