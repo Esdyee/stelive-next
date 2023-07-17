@@ -4,6 +4,8 @@ import Link from "next/link";
 import LoginBtn from "@/app/LoginBtn";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import DarkMode from "@/app/DarkMode";
+import { cookies } from "next/headers";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,11 +21,17 @@ export default async function RootLayout({
 }) {
 	// @ts-ignore
 	const session = await getServerSession(authOptions);
-	// console.log(session);
+
+	let darkMode = cookies().get("darkMode");
+	console.log("darkmode###", darkMode)
+
 	return (
 		<html lang="en">
-		<body className={inter.className}>
-		<div className="navbar">
+		<body className={`
+			${inter.className} 
+			${darkMode?.value === "true" ? "dark-mode" : ""}
+		`}>
+		<div className={ "navbar" }>
 			<Link href="/" className="navbar-item">홈</Link>
 			<span>|</span>
 			<Link href="/list" className="navbar-item">리스트</Link>
@@ -34,6 +42,7 @@ export default async function RootLayout({
 			<span>|</span>
 			<Link href="/introduce" className="navbar-item">소개</Link>
 			<LoginBtn session={session} />
+			<DarkMode />
 		</div>
 		<div className="bg-neutral-800 text-white body-content">
 			{children}
