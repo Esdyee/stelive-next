@@ -27,7 +27,6 @@ export default function DarkMode() {
 				router.refresh();
 			}
 
-			// console.log("cookieDarkMode###", cookieDarkMode)
 
 		}}>다크모드</button>
 	)
