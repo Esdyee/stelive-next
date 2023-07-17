@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from 'next/navigation';
 
-export default async function DarkMode() {
+export default function DarkMode() {
 
 	const router = useRouter();
 
@@ -20,10 +20,10 @@ export default async function DarkMode() {
 			const cookieDarkMode = document.cookie.split('; ').find(row => row.startsWith('darkMode='));
 			let darkMode;
 			if(!cookieDarkMode || cookieDarkMode.split('=')[1] === 'false') {
-				document.cookie = "darkMode=false; max-age=2592000;"
+				document.cookie = "darkMode=true; max-age=2592000;"
 				router.refresh();
 			} else {
-				document.cookie = "darkMode=true; max-age=2592000;"
+				document.cookie = "darkMode=false; max-age=2592000;"
 				router.refresh();
 			}
 
