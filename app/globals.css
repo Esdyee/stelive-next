@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* NextUI CSS 추가 */
+/* 잘못된 임포트 */
+
+
+/* 올바른 임포트 (패키지 문서에 따라 다를 수 있음) */
+/*@import '@nextui-org/react/dist/style.css'; !* 경로 확인 후 수정 필요 *!*/
+
+
 html, body {
 	width: 100%;
 	height: 100%;
